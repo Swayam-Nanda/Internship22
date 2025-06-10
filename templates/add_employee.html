@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Employee</title>
+  </head>
+  <body>
+    <h2>Add Employee</h2>
+
+    <div class="form">
+      <form action="/add-employee/" method="post">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          name="a1"
+          placeholder="Enter your name"
+          required
+        /><br /><br />
+
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          name="a2"
+          placeholder="Enter your mail id"
+          required
+        /><br /><br />
+
+        <label for="no">Contact:</label>
+        <input
+          type="tel"
+          name="a3"
+          pattern="[0-9]{10}"
+          placeholder="Enter 10-digit number"
+          required
+        /><br /><br />
+
+        <label for="gender">Gender:</label>
+        Male <input type="radio" name="gender" value="Male" required /> Female
+        <input type="radio" name="gender" value="Female" /> Others
+        <input type="radio" name="gender" value="Others" /><br /><br />
+
+        <label for="password">Password:</label>
+        <input type="password" name="a4" required /><br /><br />
+
+        <button type="submit">Signup</button>
+      </form>
+    </div>
+
+    {% if message %}
+    <p style="color: green">{{ message }}</p>
+    {% endif %}
+  </body>
+</html>

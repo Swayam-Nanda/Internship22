@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All Employees</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        border: 1px solid #aaa;
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      input[type="text"] {
+        padding: 8px;
+        width: 300px;
+      }
+      button {
+        padding: 8px 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Employee List</h2>
+
+    <form method="get" action="/get-employees/">
+      <input
+        type="text"
+        name="search"
+        placeholder="Search by name, UID, email..."
+        value="{{ search_query }}"
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>UID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Contact</th>
+          <th>Gender</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if employees %} {% for emp in employees %}
+        <tr>
+          <td>{{ emp.uid }}</td>
+          <td>{{ emp.name }}</td>
+          <td>{{ emp.email }}</td>
+          <td>{{ emp.contact }}</td>
+          <td>{{ emp.gender }}</td>
+          <td>{{ emp.role }}</td>
+        </tr>
+        {% endfor %} {% else %}
+        <tr>
+          <td colspan="6">No employees found.</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </body>
+</html>
